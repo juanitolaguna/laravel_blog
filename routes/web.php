@@ -1,57 +1,32 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-// use namespaces
-use App\Task;
-
-// intro
-
-Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');
-
-
-//blog
-
 Route::get('/', 'PostController@index');
 
-Route::get('/posts/{post}', 'PostController@show');
+//Controller => Posts
+
+//Eloquent Model => Post
+
+//Migration => create_posts_table
 
 
 
 
 
 
-// Route::get('/tasks', function () {
-// 	// $tasks = DB::table('tasks')->latest()->get();
-// 	//Eloquent
-// 	$tasks = Task::all();
-//     return view('tasks.index', compact('tasks'));
-// });
+//php artisan make:controller PostsController 
 
+// php artisan make:model Post
 
-// Route::get('/tasks/{task}', function ($id) {
-
-// 	// $task = DB::table('tasks')->find($id);
-
-// 	//Eloquent
-// 	$task = Task::find($id);
-//     return view('tasks.show', compact('task'));
-// });
+//php artisan make:migration create_posts_table --create=post
 
 
 
-Route::get('/about', function() {
-	return view('about');
-});
+//or (php artisan help make:modell -> see the flags)
 
+// php artisan make:model Post -mc
+
+
+
+
+//edit migration
+//php artisan
