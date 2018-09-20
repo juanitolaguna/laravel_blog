@@ -2,6 +2,50 @@
 
 Route::get('/', 'PostController@index');
 
+Route::get('/posts/create', 'PostController@create');
+
+Route::post('/posts', 'PostController@store');
+
+
+//make resourceful controller -boilerplate for all CRUD Methods
+
+//php artsan make:controller PostsController -r
+
+
+
+
+
+
+//posts
+
+//GET /posts
+
+//Get /posts/create
+
+//POST /posts -> write to db
+
+//GET /posts/{id}/edit
+
+//GET /posts/{id}
+
+// PATCH /posts/{id}
+
+//DELETE /posts/{id}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('/posts/{post}', 'PostController@show');
+
 //Controller => Posts
 
 //Eloquent Model => Post
