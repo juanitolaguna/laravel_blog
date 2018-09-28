@@ -8,12 +8,23 @@ use App\Post;
 
 class PostController extends Controller
 {
-    public function index() {
-    	return view('posts.index');	
+
+
+    public function __construct(){
+
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function show() {
-    	return view('posts.show');
+    public function index() {
+
+        $posts = Post::latest()->get();
+    	return view('posts.index', compact('posts'));	
+
+    }
+
+    public function show($id) {
+        $post = Post::find($id);
+    	return view('posts.show', compact('post'));
     }
 
     public function create() {
@@ -40,6 +51,9 @@ class PostController extends Controller
     	]);
 
 
+        auth()->user()->publish(
+            new Post(request(['title', 'body']))
+        );
 
 
 
@@ -53,11 +67,18 @@ class PostController extends Controller
     	//  Save it to the database
     	// $post->save();
 
+        
+
+        /* replaced by auth helper function
+
     	Post::create([
     		'title' => request('title'),
-    		'body' => request('body')
+            'body' => request('body'),
+    		'user_id' => auth()->id()
+
     		// & make the Post class fillable;
-    	]); 	
+    	]); 
+        */	
 
     	// And the redirect to the homepage.
 
